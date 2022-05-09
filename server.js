@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 import handleRegister from './controllers/register.js';
 import handleSignin from './controllers/signin.js';
 import handleProfileGet from './controllers/profile.js';
-import handleImage from './controllers/image.js';
+import {handleImage, handleApiCall} from './controllers/image.js';
 
 const db = knex({
     client: 'pg',
@@ -18,9 +18,6 @@ const db = knex({
     }
   });
 
-/* db.select('*').from('users').then(data => {
-    console.log(data);
-}); */
 
 const app = express();
 
@@ -33,17 +30,8 @@ app.post('/signin', (req,res) => { handleSignin(req,res,db,bcrypt) });
 app.post('/register', (req,res) => { handleRegister(req,res,db,bcrypt) });
 app.get('/profile/:id', (req,res) => { handleProfileGet(req,res,db) });
 app.put('/image', (req,res) => { handleImage(req,res,db) });
+app.post('/imageurl', (req,res) => { handleApiCall(req,res) });
 
-
-/* bcrypt.hash('bacon', 8, function(err, hash) {
-});
-
-bcrypt.compare("B4c0/\/", hash, function(err, res) {
-    // res === true
-});
-bcrypt.compare("not_bacon", hash, function(err, res) {
-    // res === false
-}); */
 
 app.listen(3000, () => {
     console.log('app running on 3000');
