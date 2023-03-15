@@ -13,8 +13,8 @@ const db = knex({
       host : process.env.host || '127.0.0.1',
       port : 5432,
       user : process.env.user || 'postgres',
-      password : process.env.pass || '9595',
-      database : process.env.db || 'smartbrain'
+      password : process.env.pass || 'admin',
+      database : process.env.db || 'postgres'
     }
   });
 
