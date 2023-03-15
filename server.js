@@ -28,7 +28,7 @@ const app = initializeApp(firebaseConfig);
 const db = knex({
     client: 'pg',
     connection: {
-      connectionString: process.env.DATABASE_URL,
+      connectionString: `postgres://facefindb_user:NtAdGEEolEuwBnV3WyBT2AJYIn6dvTTq@dpg-cg7pf92k728uq3pmltag-a.ohio-postgres.render.com/facefindb`,
       ssl: { rejectUnauthorized: false },
     }
   });
