@@ -7,12 +7,33 @@ import handleSignin from './controllers/signin.js';
 import handleProfileGet from './controllers/profile.js';
 import {handleImage, handleApiCall} from './controllers/image.js';
 
+/*// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyA9TfUyR3MJyeimfD_yEQ3XszDe-FFAZ0c",
+  authDomain: "facefindapp.firebaseapp.com",
+  projectId: "facefindapp",
+  storageBucket: "facefindapp.appspot.com",
+  messagingSenderId: "420293148326",
+  appId: "1:420293148326:web:99c0ad947c9f0d0b5afe67"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+ */
 const db = knex({
     client: 'pg',
     connection: {
-      connectionString: process.env.DATABASE_URL
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
     }
   });
+
+console.log(process.env.DATABASE_URL);
 
 const PORT = process.env.port || 3000;
 const app = express();
